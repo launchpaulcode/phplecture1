@@ -24,14 +24,13 @@ susikurti GET formą kuri turėtų 4 įvesties laukus. tema  pagal jūsų fantaz
  <container id="container">
     <?php 
     session_start();
-    $_SESSION['userInfo'] = []; 
-    
+   
     echo ( " Session id : " . session_id());
 
-    // if(!isset($_SESSION['userInfo'])) {
-    //     $_SESSION['userInfo'] = [];
+    if(!isset($_SESSION['userInfo'])) {
+        $_SESSION['userInfo'] = [];
          
-    // }
+    }
     
     
     if( isset($_GET["name"]) && isset($_GET["username"]) && isset($_GET["email"])  && isset($_GET["password"]) ) {
@@ -81,21 +80,25 @@ susikurti GET formą kuri turėtų 4 įvesties laukus. tema  pagal jūsų fantaz
 
   <tbody>
     <?php 
-        foreach ($_SESSION['userInfo'] as $userNumber ) {
+        foreach ($_SESSION['userInfo'] as $key => $userNumber ) {
             
         
     ?>
         <tr  class="table-success">
-            <td> <?=$userNumber['name']?></td>
-            <td> <?=$userNumber['username']?></td>
-            <td> <?=$userNumber['email']?></td>
-            <td> <?=$userNumber['password']?></td>
+        
+            <td> <?php echo $userNumber['name'];?> </td>
+            <td> <?php echo $userNumber['username'];?> </td>
+            <td> <?php echo $userNumber['email'];?> </td>
+            <td> <?php echo $userNumber['password'];?> </td>
+
+            
           
             
         <tr>
           
     </tr>
-        <?php } ?>
+    <?php } ?>
+
 </tbody>
 </table>
 </container>
